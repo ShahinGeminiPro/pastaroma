@@ -27,7 +27,7 @@
       id="navbar"
     >
       <div
-        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between md:justify-center"
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
       >
         <!-- Mobile Brand (Mobile only) -->
         <a
@@ -37,32 +37,19 @@
         >
 
         <!-- Desktop Split Nav (Desktop only) -->
-        <nav
-          class="hidden md:flex items-center justify-center gap-12 lg:gap-16"
-        >
-          <!-- Right Navigation Group (RTL Visual Right) -->
+        <nav class="hidden md:flex items-center justify-between w-full">
+          <a
+            href="#"
+            class="absolute left-1/2 -translate-x-1/2 text-primary font-bold text-2xl lg:text-3xl tracking-tight"
+            >پاستاروما</a
+          >
+
           <div class="flex items-center gap-8">
             <a
               href="#"
               class="text-light-text font-semibold hover:text-primary transition-colors"
               >خانه</a
             >
-            <a
-              href="#"
-              class="bg-primary hover:brightness-110 text-white px-7 py-2 rounded-full font-bold text-sm transition-all shadow-lg shadow-primary/20 hover:-translate-y-0.5"
-              >منو</a
-            >
-          </div>
-
-          <!-- Center Brand Logo -->
-          <a
-            href="#"
-            class="text-primary font-bold text-2xl lg:text-3xl tracking-tight px-2"
-            >پاستاروما</a
-          >
-
-          <!-- Left Navigation Group (RTL Visual Left) -->
-          <div class="flex items-center gap-8">
             <a
               href="#"
               class="text-muted-text hover:text-primary transition-colors"
@@ -74,6 +61,12 @@
               >تماس با ما</a
             >
           </div>
+
+          <a
+            href="#"
+            class="bg-primary hover:brightness-110 text-white px-7 py-2 rounded-full font-bold text-sm transition-all shadow-lg shadow-primary/20 hover:-translate-y-0.5"
+            >منو</a
+          >
         </nav>
 
         <!-- Mobile Toggle -->
