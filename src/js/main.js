@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenuBtn.addEventListener('click', toggleMenu);
     closeMenuBtn.addEventListener('click', toggleMenu);
 
-    // Close menu when clicking a link inside drawer
     const drawerLinks = mobileDrawer.querySelectorAll('a');
     drawerLinks.forEach(link => {
       link.addEventListener('click', toggleMenu);
@@ -34,27 +33,109 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Carousel Logic (Basic horizontal scroll on button click)
+  // Infinite Featured Carousel
   const track = document.getElementById('carousel-track');
   const prevBtn = document.getElementById('prev-btn');
   const nextBtn = document.getElementById('next-btn');
 
   if (track && prevBtn && nextBtn) {
-    // Determine card width dynamically based on first card
-    const card = track.firstElementChild;
+    const originalCards = Array.from(track.children);
+    const cardCount = originalCards.length;
 
-    prevBtn.addEventListener('click', () => {
-      if (card) {
-        const scrollAmount = card.offsetWidth + 24; // width + gap
-        track.scrollBy({ left: scrollAmount, behavior: 'smooth' }); // In RTL, scrolling right is positive
-      }
-    });
+    if (cardCount > 0) {
+      // Clone the complete set on both sides so the visible carousel is
+      // always filled, even when multiple cards are visible at once.
+      const lastClones = originalCards.map(card => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        return clone;
+      });
+      const firstClones = originalCards.map(card => {
+        const clone = card.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        return clone;
+      });
 
-    nextBtn.addEventListener('click', () => {
-      if (card) {
-        const scrollAmount = card.offsetWidth + 24;
-        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      }
-    });
+      track.prepend(...lastClones);
+      track.append(...firstClones);
+
+      let currentIndex = cardCount;
+      let isAnimating = false;
+      let autoSlideTimer;
+
+      const getGap = () => parseFloat(getComputedStyle(track).gap) || 0;
+
+      const getStep = () => {
+        const card = track.children[0];
+        return card.getBoundingClientRect().width + getGap();
+      };
+
+      const updatePosition = (animate = true) => {
+        track.style.transition = animate
+          ? 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)'
+          : 'none';
+        track.style.transform = `translate3d(${-currentIndex * getStep()}px, 0, 0)`;
+      };
+
+      const goTo = (index) => {
+        if (isAnimating) return;
+        currentIndex = index;
+        isAnimating = true;
+        updatePosition(true);
+      };
+
+      const goNext = () => {
+        goTo(currentIndex + 1);
+      };
+
+      const goPrevious = () => {
+        goTo(currentIndex - 1);
+      };
+
+      track.addEventListener('transitionend', event => {
+        if (event.propertyName !== 'transform') return;
+
+        isAnimating = false;
+
+        if (currentIndex === cardCount * 2) {
+          currentIndex = cardCount;
+          updatePosition(false);
+        } else if (currentIndex === 0) {
+          currentIndex = cardCount;
+          updatePosition(false);
+        }
+      });
+
+      const resetAutoSlide = () => {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = setInterval(goNext, 7000);
+      };
+
+      prevBtn.addEventListener('click', () => {
+        if (!isAnimating) {
+          goPrevious();
+          resetAutoSlide();
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (!isAnimating) {
+          goNext();
+          resetAutoSlide();
+        }
+      });
+
+      window.addEventListener('resize', () => {
+        updatePosition(false);
+      });
+
+      // Start on the first real card.
+      requestAnimationFrame(() => updatePosition(false));
+      resetAutoSlide();
+
+      window.addEventListener('beforeunload', () => {
+        clearInterval(autoSlideTimer);
+      });
+    }
   }
 });

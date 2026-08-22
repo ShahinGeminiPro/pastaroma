@@ -55,3 +55,85 @@
     animation-delay: 400ms;
   }
 }
+
+/* Featured food carousel */
+#carousel-viewport {
+  overflow: hidden;
+  position: relative;
+}
+
+#carousel-track {
+  overflow: visible;
+  display: flex;
+  flex-wrap: nowrap;
+  direction: ltr;
+  scroll-snap-type: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+#carousel-track > .pastaroma-carousel-card {
+  flex: 0 0 260px;
+  width: 260px;
+}
+
+#carousel-track > .pastaroma-carousel-clone {
+  pointer-events: none;
+}
+
+#prev-btn,
+#next-btn {
+  opacity: 1;
+  display: flex;
+}
+
+#prev-btn img,
+#next-btn img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  #carousel-track {
+    gap: 0;
+  }
+
+  #carousel-track > .pastaroma-carousel-card {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  #prev-btn,
+  #next-btn {
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    opacity: 1;
+  }
+
+  #prev-btn {
+    left: 0;
+  }
+
+  #next-btn {
+    right: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  #carousel-track > .pastaroma-carousel-card {
+    flex-basis: 280px;
+    width: 280px;
+  }
+
+  #prev-btn,
+  #next-btn {
+    opacity: 0;
+  }
+
+  .group\/carousel:hover #prev-btn,
+  .group\/carousel:hover #next-btn {
+    opacity: 1;
+  }
+}
