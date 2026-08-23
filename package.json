@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Pastaroma Restaurant Website",
   "scripts": {
-    "dev": "npm run build && concurrently \"npm run watch\" \"serve -p 3000\"",
-    "start": "serve -p 3000",
+    "dev": "npm run build && node server.js",
+    "start": "node server.js",
     "build": "tailwindcss -i ./src/css/input.css -o ./dist/css/output.css --minify",
     "watch": "tailwindcss -i ./src/css/input.css -o ./dist/css/output.css --watch"
   },
@@ -19,5 +19,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

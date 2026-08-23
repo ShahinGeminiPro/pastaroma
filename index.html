@@ -142,7 +142,7 @@
     <main>
       <!-- Hero Section -->
       <section
-        class="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center min-h-[90vh] overflow-hidden"
+        class="relative pt-32 pb-20 md:pt-44 md:pb-28 flex items-center min-h-[90vh] overflow-hidden"
       >
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
@@ -150,7 +150,7 @@
             src="assets/images/hero/hero-pasta.jpg"
             alt="Pasta Background"
             class="w-full h-full object-cover object-center md:object-right"
-            loading="lazy"
+            loading="eager"
           />
           <!-- Dark gradient overlay: heavier on visual left where text is located -->
           <div
@@ -159,52 +159,146 @@
         </div>
 
         <div
-          class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center md:items-end text-center md:text-right"
+          class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full"
         >
           <div
-            class="relative z-10 max-w-2xl md:mr-auto md:ml-0 flex flex-col items-center md:items-start text-center md:text-right"
+            class="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 xl:gap-24"
           >
-            <h1
-              class="text-4xl md:text-5xl lg:text-6xl font-black text-light-text leading-[2] mb-6 animate-fade-in-up"
-            >
-              طعم‌های خاص،<br />
-              انتخاب‌های بی‌نهایت
-            </h1>
-            <p
-              class="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed font-light animate-fade-in-up animation-delay-200"
-            >
-              از پاستا و پیتزا تا برگر و ساندویچ،<br class="hidden md:block" />
-              طعم‌های محبوب شما با کیفیتی تازه و متفاوت
-            </p>
+            <!-- Hero Content (Text & Action Buttons on left) -->
             <div
-              class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start w-full sm:w-auto animate-fade-in-up animation-delay-400"
+              class="w-full lg:flex-1 flex flex-col items-center lg:items-start text-center lg:text-right order-1 lg:order-2 z-20"
             >
-              <a
-                href="#"
-                class="bg-primary hover:brightness-110 text-white w-44 h-16 px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 flex items-center justify-center hover:-translate-y-0.5 text-center"
-                >مشاهده منو</a
+              <h1
+                class="hero-title text-4xl md:text-5xl lg:text-6xl font-black text-light-text mb-6 animate-fade-in-up"
               >
-              <a
-                href="#"
-                class="border border-white/20 hover:bg-white/5 text-white w-44 h-16 px-8 py-4 rounded-xl font-bold text-lg transition-all text-center flex items-center justify-center"
-                >درباره ما</a
+                طعم‌های خاص،<br />
+                انتخاب‌های بی‌نهایت
+              </h1>
+              <p
+                class="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed font-light animate-fade-in-up animation-delay-200 max-w-xl"
               >
+                از پاستا و پیتزا تا برگر و ساندویچ،<br class="hidden md:block" />
+                طعم‌های محبوب شما با کیفیتی تازه و متفاوت
+              </p>
+              <div
+                class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full sm:w-auto animate-fade-in-up animation-delay-400"
+              >
+                <a
+                  href="#menu"
+                  id="hero-btn-menu"
+                  class="hero-action-btn bg-primary hover:brightness-110 text-white shadow-xl shadow-primary/30"
+                  >مشاهده منو</a
+                >
+                <a
+                  href="#about"
+                  id="hero-btn-about"
+                  class="hero-action-btn border border-white/20 hover:bg-white/5 text-white hover:border-white/40"
+                  >درباره ما</a
+                >
+              </div>
             </div>
-          </div>
 
-          <!-- Hero Floating Food Cards -->
-          <div class="hero-food-cards" aria-hidden="true">
-            <div class="hero-food-card hero-card-one">
-              <img src="assets/images/featured/featured-1-alfredo.jpg" alt="پاستا آلفردو">
-              <div><strong>پاستا آلفردو</strong><span>سس خامه‌ای مخصوص</span></div>
-            </div>
-            <div class="hero-food-card hero-card-two">
-              <img src="assets/images/featured/featured-5-cheeseburger.jpg" alt="چیزبرگر">
-              <div><strong>چیزبرگر ویژه</strong><span>برگر تازه و خوش‌طعم</span></div>
-            </div>
-            <div class="hero-food-card hero-card-three">
-              <img src="assets/images/featured/featured-3-pepperoni.jpg" alt="پیتزا پپرونی">
-              <div><strong>پیتزا پپرونی</strong><span>طعم اصیل ایتالیایی</span></div>
+            <!-- Hero Floating Food Cards (Angled composition on right) -->
+            <div
+              class="w-full lg:flex-1 flex items-center justify-center order-2 lg:order-1 relative z-10"
+            >
+              <div
+                class="hero-cards-container"
+                aria-label="غذاهای برگزیده پاستاروما"
+              >
+                <!-- Card 1: Alfredo Pasta -->
+                <div
+                  class="hero-premium-card hero-card-1 group"
+                  id="hero-food-card-1"
+                >
+                  <div class="relative h-44 sm:h-48 overflow-hidden">
+                    <img
+                      src="assets/images/featured/featured-1-alfredo.jpg"
+                      alt="پاستا چیکن آلفردو"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="eager"
+                    />
+                    <div
+                      class="absolute top-3 right-3 bg-emerald-700/90 backdrop-blur text-white text-[11px] font-bold px-3 py-1 rounded-full z-10"
+                    >
+                      پیشنهاد ویژه
+                    </div>
+                    <div
+                      class="absolute inset-0 bg-[#27272A] opacity-20 pointer-events-none"
+                    ></div>
+                  </div>
+                  <div class="p-5 text-center">
+                    <h3 class="text-primary text-lg sm:text-xl font-bold mb-1.5">
+                      پاستا چیکن آلفردو
+                    </h3>
+                    <p class="text-muted-text text-xs sm:text-sm">
+                      مرغ، خامه، پنیر پارمزان
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Card 2: Classic Cheeseburger -->
+                <div
+                  class="hero-premium-card hero-card-2 group"
+                  id="hero-food-card-2"
+                >
+                  <div class="relative h-44 sm:h-48 overflow-hidden">
+                    <img
+                      src="assets/images/featured/featured-5-cheeseburger.jpg"
+                      alt="چیزبرگر کلاسیک"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="eager"
+                    />
+                    <div
+                      class="absolute top-3 right-3 bg-primary/90 backdrop-blur text-white text-[11px] font-bold px-3 py-1 rounded-full z-10"
+                    >
+                      محبوب‌ترین
+                    </div>
+                    <div
+                      class="absolute inset-0 bg-[#27272A] opacity-20 pointer-events-none"
+                    ></div>
+                  </div>
+                  <div class="p-5 text-center">
+                    <h3 class="text-primary text-lg sm:text-xl font-bold mb-1.5">
+                      چیزبرگر کلاسیک
+                    </h3>
+                    <p class="text-muted-text text-xs sm:text-sm">
+                      نان برگر، گوشت، پنیر چدار و سس مخصوص
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Card 3: Pepperoni Pizza -->
+                <div
+                  class="hero-premium-card hero-card-3 group"
+                  id="hero-food-card-3"
+                >
+                  <div class="relative h-44 sm:h-48 overflow-hidden">
+                    <img
+                      src="assets/images/featured/featured-3-pepperoni.jpg"
+                      alt="پیتزا پپرونی"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="eager"
+                    />
+                    <div
+                      class="absolute top-3 right-3 bg-amber-600/90 backdrop-blur text-white text-[11px] font-bold px-3 py-1 rounded-full z-10"
+                    >
+                      طعم اصیل
+                    </div>
+                    <div
+                      class="absolute inset-0 bg-[#27272A] opacity-20 pointer-events-none"
+                    ></div>
+                  </div>
+                  <div class="p-5 text-center">
+                    <h3 class="text-primary text-lg sm:text-xl font-bold mb-1.5">
+                      پیتزا پپرونی
+                    </h3>
+                    <p class="text-muted-text text-xs sm:text-sm">
+                      گوجه، موتزارلا، پپرونی تنوری
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -216,7 +310,7 @@
       >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12 md:mb-16">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 slider-title-glow">
               انتخاب محبوب مشتری‌های پاستاروما
             </h2>
           </div>
@@ -227,6 +321,7 @@
               <div id="carousel-track" class="flex gap-6 pb-8">
                 <!-- Card 1 -->
                 <div
+                  id="carousel-card-alfredo"
                   class="pastaroma-carousel-card snap-center shrink-0 w-[260px] md:w-[280px] glass-card rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div class="relative h-48 md:h-52 overflow-hidden">
@@ -264,6 +359,7 @@
 
                 <!-- Card 2 -->
                 <div
+                  id="carousel-card-pesto"
                   class="pastaroma-carousel-card snap-center shrink-0 w-[260px] md:w-[280px] glass-card rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div class="relative h-48 md:h-52 overflow-hidden">
@@ -289,6 +385,7 @@
 
                 <!-- Card 3 -->
                 <div
+                  id="carousel-card-pepperoni"
                   class="pastaroma-carousel-card snap-center shrink-0 w-[260px] md:w-[280px] glass-card rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div class="relative h-48 md:h-52 overflow-hidden">
@@ -299,9 +396,9 @@
                       loading="lazy"
                     />
                     <div
-                      class="absolute top-3 right-3 bg-emerald-700/90 backdrop-blur text-white text-[10px] md:text-xs font-bold px-3 py-1.5 rounded-full z-10"
+                      class="absolute top-3 right-3 bg-amber-600/90 backdrop-blur text-white text-[11px] font-bold px-3 py-1 rounded-full z-10"
                     >
-                      پیشنهاد ویژه
+                      طعم اصیل
                     </div>
                     <div
                       class="absolute inset-0 bg-[#27272A] opacity-20 pointer-events-none group-hover:opacity-0 transition-opacity"
@@ -319,6 +416,7 @@
 
                 <!-- Card 4 -->
                 <div
+                  id="carousel-card-pulled-beef"
                   class="pastaroma-carousel-card snap-center shrink-0 w-[260px] md:w-[280px] glass-card rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div class="relative h-48 md:h-52 overflow-hidden">
@@ -343,15 +441,21 @@
                 </div>
                 <!-- Card 5 -->
                 <div
+                  id="carousel-card-cheeseburger"
                   class="pastaroma-carousel-card snap-center shrink-0 w-[260px] md:w-[280px] glass-card rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div class="relative h-48 md:h-52 overflow-hidden">
                     <img
                       src="assets/images/featured/featured-5-cheeseburger.jpg"
-                      alt="چیزبرگر"
+                      alt="چیزبرگر کلاسیک"
                       class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
                     />
+                    <div
+                      class="absolute top-3 right-3 bg-primary/90 backdrop-blur text-white text-[11px] font-bold px-3 py-1 rounded-full z-10"
+                    >
+                      محبوب‌ترین
+                    </div>
                     <div
                       class="absolute inset-0 bg-[#27272A] opacity-20 pointer-events-none group-hover:opacity-0 transition-opacity"
                     ></div>
@@ -368,6 +472,7 @@
 
                 <!-- Card 6 -->
                 <div
+                  id="carousel-card-margherita"
                   class="pastaroma-carousel-card snap-center shrink-0 w-[260px] md:w-[280px] glass-card rounded-2xl overflow-hidden group cursor-pointer shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <div class="relative h-48 md:h-52 overflow-hidden">
@@ -396,7 +501,7 @@
             <!-- Navigation Arrows -->
             <button
               id="prev-btn"
-              class="absolute left-0 md:-left-5 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur text-white border border-white/20 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:bg-white/20 transition-colors z-10"
+              class="absolute top-1/2 -translate-y-1/2 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center z-10"
               aria-label="قبلی"
             >
               <img
@@ -407,7 +512,7 @@
             </button>
             <button
               id="next-btn"
-              class="absolute right-0 md:-right-5 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 backdrop-blur text-white border border-white/20 rounded-full flex items-center justify-center shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:bg-white/20 transition-colors z-10"
+              class="absolute top-1/2 -translate-y-1/2 w-11 h-11 md:w-12 md:h-12 rounded-full flex items-center justify-center z-10"
               aria-label="بعدی"
             >
               <img
@@ -437,127 +542,121 @@
           >
             <!-- Pasta -->
             <a
-              href="#"
-              class="group bg-white/50 border border-black/5 rounded-2xl overflow-hidden shadow-lg hover:bg-white transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center pb-5"
+              id="category-card-pasta"
+              href="#categories"
+              class="menu-category-card group relative block h-60 sm:h-64 md:h-72 w-full rounded-2xl overflow-hidden shadow-lg border border-black/5"
             >
-              <div class="w-full h-48 overflow-hidden p-3 pb-0">
-                <img
-                  src="assets/images/categories/category-1-pasta.jpg"
-                  alt="پاستا"
-                  class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
-              <div class="mt-5">
-                <span
-                  class="bg-primary text-white px-8 py-2 rounded-lg font-bold text-sm"
-                  >پاستا</span
-                >
+              <img
+                src="assets/images/categories/category-1-pasta.jpg"
+                alt="پاستا"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="menu-category-overlay"></div>
+              <div class="menu-category-content">
+                <span class="menu-decor-line menu-decor-line-left" aria-hidden="true"></span>
+                <span class="menu-category-name">پاستا</span>
+                <span class="menu-decor-line menu-decor-line-right" aria-hidden="true"></span>
               </div>
             </a>
 
             <!-- Pizza -->
             <a
-              href="#"
-              class="group bg-white/50 border border-black/5 rounded-2xl overflow-hidden shadow-lg hover:bg-white transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center pb-5"
+              id="category-card-pizza"
+              href="#categories"
+              class="menu-category-card group relative block h-60 sm:h-64 md:h-72 w-full rounded-2xl overflow-hidden shadow-lg border border-black/5"
             >
-              <div class="w-full h-48 overflow-hidden p-3 pb-0">
-                <img
-                  src="assets/images/categories/category-2-pizza.jpg"
-                  alt="پیتزا"
-                  class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
-              <div class="mt-5">
-                <span
-                  class="bg-primary text-white px-8 py-2 rounded-lg font-bold text-sm"
-                  >پیتزا</span
-                >
+              <img
+                src="assets/images/categories/category-2-pizza.jpg"
+                alt="پیتزا"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="menu-category-overlay"></div>
+              <div class="menu-category-content">
+                <span class="menu-decor-line menu-decor-line-left" aria-hidden="true"></span>
+                <span class="menu-category-name">پیتزا</span>
+                <span class="menu-decor-line menu-decor-line-right" aria-hidden="true"></span>
               </div>
             </a>
 
             <!-- Burger -->
             <a
-              href="#"
-              class="group bg-white/50 border border-black/5 rounded-2xl overflow-hidden shadow-lg hover:bg-white transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center pb-5"
+              id="category-card-burger"
+              href="#categories"
+              class="menu-category-card group relative block h-60 sm:h-64 md:h-72 w-full rounded-2xl overflow-hidden shadow-lg border border-black/5"
             >
-              <div class="w-full h-48 overflow-hidden p-3 pb-0">
-                <img
-                  src="assets/images/categories/category-3-burger.jpg"
-                  alt="برگر"
-                  class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
-              <div class="mt-5">
-                <span
-                  class="bg-primary text-white px-8 py-2 rounded-lg font-bold text-sm"
-                  >برگر</span
-                >
+              <img
+                src="assets/images/categories/category-3-burger.jpg"
+                alt="برگر"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="menu-category-overlay"></div>
+              <div class="menu-category-content">
+                <span class="menu-decor-line menu-decor-line-left" aria-hidden="true"></span>
+                <span class="menu-category-name">برگر</span>
+                <span class="menu-decor-line menu-decor-line-right" aria-hidden="true"></span>
               </div>
             </a>
 
             <!-- Sandwich -->
             <a
-              href="#"
-              class="group bg-white/50 border border-black/5 rounded-2xl overflow-hidden shadow-lg hover:bg-white transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center pb-5"
+              id="category-card-sandwich"
+              href="#categories"
+              class="menu-category-card group relative block h-60 sm:h-64 md:h-72 w-full rounded-2xl overflow-hidden shadow-lg border border-black/5"
             >
-              <div class="w-full h-48 overflow-hidden p-3 pb-0">
-                <img
-                  src="assets/images/categories/category-4-sandwich.jpg"
-                  alt="ساندویچ"
-                  class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
-              <div class="mt-5">
-                <span
-                  class="bg-primary text-white px-8 py-2 rounded-lg font-bold text-sm"
-                  >ساندویچ</span
-                >
+              <img
+                src="assets/images/categories/category-4-sandwich.jpg"
+                alt="ساندویچ"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="menu-category-overlay"></div>
+              <div class="menu-category-content">
+                <span class="menu-decor-line menu-decor-line-left" aria-hidden="true"></span>
+                <span class="menu-category-name">ساندویچ</span>
+                <span class="menu-decor-line menu-decor-line-right" aria-hidden="true"></span>
               </div>
             </a>
 
             <!-- Drinks -->
             <a
-              href="#"
-              class="group bg-white/50 border border-black/5 rounded-2xl overflow-hidden shadow-lg hover:bg-white transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center pb-5"
+              id="category-card-drinks"
+              href="#categories"
+              class="menu-category-card group relative block h-60 sm:h-64 md:h-72 w-full rounded-2xl overflow-hidden shadow-lg border border-black/5"
             >
-              <div class="w-full h-48 overflow-hidden p-3 pb-0">
-                <img
-                  src="assets/images/categories/category-5-drinks.jpg"
-                  alt="نوشیدنی"
-                  class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
-              <div class="mt-5">
-                <span
-                  class="bg-primary text-white px-8 py-2 rounded-lg font-bold text-sm"
-                  >نوشیدنی</span
-                >
+              <img
+                src="assets/images/categories/category-5-drinks.jpg"
+                alt="نوشیدنی"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="menu-category-overlay"></div>
+              <div class="menu-category-content">
+                <span class="menu-decor-line menu-decor-line-left" aria-hidden="true"></span>
+                <span class="menu-category-name">نوشیدنی</span>
+                <span class="menu-decor-line menu-decor-line-right" aria-hidden="true"></span>
               </div>
             </a>
 
             <!-- Sauces -->
             <a
-              href="#"
-              class="group bg-white/50 border border-black/5 rounded-2xl overflow-hidden shadow-lg hover:bg-white transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center pb-5"
+              id="category-card-sauces"
+              href="#categories"
+              class="menu-category-card group relative block h-60 sm:h-64 md:h-72 w-full rounded-2xl overflow-hidden shadow-lg border border-black/5"
             >
-              <div class="w-full h-48 overflow-hidden p-3 pb-0">
-                <img
-                  src="assets/images/categories/category-6-sauce.jpg"
-                  alt="سس"
-                  class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
-              <div class="mt-5">
-                <span
-                  class="bg-primary text-white px-8 py-2 rounded-lg font-bold text-sm"
-                  >سس</span
-                >
+              <img
+                src="assets/images/categories/category-6-sauce.jpg"
+                alt="سس"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="menu-category-overlay"></div>
+              <div class="menu-category-content">
+                <span class="menu-decor-line menu-decor-line-left" aria-hidden="true"></span>
+                <span class="menu-category-name">سس</span>
+                <span class="menu-decor-line menu-decor-line-right" aria-hidden="true"></span>
               </div>
             </a>
           </div>
@@ -566,81 +665,44 @@
     </main>
 
     <!-- Footer -->
-    <footer
-      class="bg-transparent text-muted-text py-16 md:py-20 border-t border-white/5 relative z-10"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center md:text-right"
-        >
-          <!-- Brand / Slogan -->
-          <div
-            class="space-y-4 flex flex-col items-center md:items-start order-1"
-          >
-            <h3 class="text-primary font-bold text-3xl mb-2">پاستاروما</h3>
-            <p class="text-muted-text text-sm max-w-[200px] leading-relaxed">
-              طعم‌های خاص،<br />انتخاب‌های بی‌نهایت
+    <footer class="site-footer relative overflow-hidden border-t border-white/5 bg-[#0B0B0C] text-muted-text py-16 md:py-20">
+      <div class="footer-food-particles" aria-hidden="true"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="footer-card-grid">
+          <section class="footer-info-card footer-brand-card">
+            <h3 class="text-primary font-bold text-3xl mb-3">پاستاروما</h3>
+            <p class="text-muted-text text-sm leading-8 max-w-xs mx-auto">
+              طعم‌های خاص، انتخاب‌های بی‌نهایت؛ تجربه‌ای خوش‌طعم از پاستا، پیتزا و برگر در پاستاروما.
             </p>
-          </div>
+          </section>
 
-          <!-- Contact -->
-          <div
-            class="space-y-4 flex flex-col items-center md:items-start order-2"
-          >
-            <h4 class="font-bold text-lg text-white mb-2">شماره‌های تماس ما</h4>
-            <a
-              href="tel:09363220765"
-              class="text-muted-text hover:text-primary transition-colors flex items-center gap-2"
-              dir="ltr"
-            >
-              09363220765
-            </a>
-            <a
-              href="tel:09157934990"
-              class="text-muted-text hover:text-primary transition-colors flex items-center gap-2"
-              dir="ltr"
-            >
-              09157934990
-            </a>
-          </div>
+          <section class="footer-info-card footer-contact-card">
+            <h4 class="font-bold text-lg text-white mb-5">شماره‌های تماس ما</h4>
+            <div class="flex flex-col items-center gap-3" dir="ltr">
+              <a href="tel:09363220765" class="footer-contact-link">09363220765</a>
+              <a href="tel:09157934990" class="footer-contact-link">09157934990</a>
+            </div>
+          </section>
 
-          <!-- Address & Socials -->
-          <div
-            class="space-y-4 flex flex-col items-center md:items-start order-3"
-          >
-            <h4 class="font-bold text-lg text-white mb-2">آدرس مجموعه</h4>
-            <p class="text-muted-text">بیرجند - پاسداران - میدان جانبازان</p>
+          <section class="footer-info-card footer-address-card">
+            <h4 class="font-bold text-lg text-white mb-4">آدرس مجموعه</h4>
+            <p class="text-muted-text leading-8">بیرجند - پاسداران - میدان جانبازان</p>
+          </section>
 
-            <h4 class="font-bold text-lg text-white mt-8 mb-2">
-              ما را در شبکه‌های اجتماعی دنبال کنید
-            </h4>
-            <div class="flex gap-4">
-              <!-- Telegram -->
-              <a
-                href="#"
-                class="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:bg-primary-hover transition-colors text-white shadow-lg shadow-primary/20 hover:-translate-y-1"
-                aria-label="تلگرام"
-              >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.94z"
-                  />
-                </svg>
+          <section class="footer-info-card footer-social-card">
+            <h4 class="font-bold text-lg text-white mb-5">ما را در شبکه‌های اجتماعی دنبال کنید</h4>
+            <div class="footer-socials" dir="ltr">
+              <a href="#" class="footer-social footer-social-telegram" aria-label="تلگرام">
+                <img src="assets/images/social/telegram.svg" alt="" aria-hidden="true" />
               </a>
-              <!-- Instagram -->
-              <a
-                href="#"
-                class="w-10 h-10 rounded-full bg-primary flex items-center justify-center hover:bg-primary-hover transition-colors text-white shadow-lg shadow-primary/20 hover:-translate-y-1"
-                aria-label="اینستاگرام"
-              >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
-                  />
-                </svg>
+              <a href="#" class="footer-social footer-social-instagram" aria-label="اینستاگرام">
+                <img src="assets/images/social/instagram.svg" alt="" aria-hidden="true" />
+              </a>
+              <a href="#" class="footer-social footer-social-bale" aria-label="بله">
+                <img src="assets/images/social/bale.svg" alt="" aria-hidden="true" />
               </a>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </footer>
