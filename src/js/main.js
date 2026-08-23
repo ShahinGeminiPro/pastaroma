@@ -157,86 +157,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Floating food portal animation in the Footer
-  const footerParticles = document.querySelector('.footer-food-particles');
-  if (footerParticles && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const footerFoodImages = [
-      'assets/images/footer/pasta/pasta-1.jpg',
-      'assets/images/footer/pasta/pasta-2.jpg',
-      'assets/images/footer/pasta/pasta-3.jpg',
-      'assets/images/footer/pasta/pasta-4.jpg',
-      'assets/images/footer/pasta/pasta-5.jpg',
-      'assets/images/footer/pasta/pasta-6.jpg',
-      'assets/images/footer/burger/burger-1.jpg',
-      'assets/images/footer/burger/burger-2.jpg',
-      'assets/images/footer/burger/burger-3.jpg',
-      'assets/images/footer/burger/burger-4.jpg',
-      'assets/images/footer/burger/burger-5.jpg',
-      'assets/images/footer/burger/burger-6.jpg',
-      'assets/images/footer/pizza/pizza-1.jpg',
-      'assets/images/footer/pizza/pizza-2.jpg',
-      'assets/images/footer/pizza/pizza-3.jpg',
-      'assets/images/footer/pizza/pizza-4.jpg',
-      'assets/images/footer/pizza/pizza-5.jpg',
-      'assets/images/footer/pizza/pizza-6.jpg'
+  // Footer Floating Food Background Animation
+  function initFooterFloatingFood() {
+    const container = document.getElementById('footer-floating-container');
+    if (!container) return;
+
+    const foodAssets = [
+      'assets/images/floating/pasta-alfredo.jpg',
+      'assets/images/floating/pizza-pepperoni.jpg',
+      'assets/images/floating/burger-classic.jpg',
+      'assets/images/floating/pasta-penne.jpg',
+      'assets/images/floating/pizza-margherita.jpg',
+      'assets/images/floating/burger-gourmet.jpg',
+      'assets/images/floating/pasta-pesto.jpg',
+      'assets/images/floating/pizza-beef.jpg',
+      'assets/images/floating/pasta-carbonara.jpg',
+      'assets/images/floating/pizza-crispy.jpg'
     ];
 
-    const randomBetween = (min, max) => Math.random() * (max - min) + min;
-    const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+    const totalParticles = 12;
 
-    footerFoodImages.forEach((src, index) => {
-      const image = document.createElement('img');
-      image.className = 'footer-food-particle';
-      image.src = src;
-      image.alt = '';
-      image.setAttribute('aria-hidden', 'true');
-      footerParticles.appendChild(image);
+    const spawnParticle = (index) => {
+      const el = document.createElement('div');
+      el.className = 'footer-floating-food';
 
-      const run = async () => {
-        while (document.body.contains(image)) {
-          const footerWidth = footerParticles.clientWidth;
-          const footerHeight = footerParticles.clientHeight;
-          const imageWidth = image.offsetWidth || 78;
-          const imageHeight = image.offsetHeight || 58;
-          const y = randomBetween(12, Math.max(12, footerHeight - imageHeight - 12));
-          const duration = randomBetween(19000, 30000);
-          const rotation = randomBetween(260, 520);
-          const startX = footerWidth + randomBetween(20, 220);
-          const endX = -imageWidth - randomBetween(20, 140);
-          const delay = index * 260;
+      const foodImgSrc = foodAssets[index % foodAssets.length];
+      const img = document.createElement('img');
+      img.src = foodImgSrc;
+      img.alt = 'غذا پاستاروما';
+      img.loading = 'lazy';
+      el.appendChild(img);
 
-          image.style.top = `${y}px`;
-          image.style.left = '0px';
-          image.style.transform = `translate3d(${startX}px, 0, 0) rotate(0deg)`;
+      const size = Math.floor(Math.random() * 24) + 44; // 44px to 68px
+      const initialTop = Math.floor(Math.random() * 75) + 8; // 8% to 83%
+      const duration = (Math.random() * 14 + 20).toFixed(1); // 20s to 34s
+      const spinDuration = (Math.random() * 10 + 12).toFixed(1); // 12s to 22s
+      const opacity = (Math.random() * 0.15 + 0.22).toFixed(2); // 0.22 to 0.37
 
-          if (delay) await wait(delay);
-          if (!document.body.contains(image)) return;
+      el.style.setProperty('--food-size', `${size}px`);
+      el.style.setProperty('--spin-duration', `${spinDuration}s`);
+      el.style.setProperty('--target-opacity', opacity);
+      el.style.top = `${initialTop}%`;
 
-          const animation = image.animate(
-            [
-              { transform: `translate3d(${startX}px, 0, 0) rotate(0deg)` },
-              { transform: `translate3d(${endX}px, 0, 0) rotate(-${rotation}deg)` }
-            ],
-            {
-              duration,
-              easing: 'linear',
-              fill: 'forwards'
-            }
-          );
-
-          try {
-            await animation.finished;
-          } catch {
-            return;
-          }
-
-          if (!document.body.contains(image)) return;
-          await wait(1000);
-        }
+      const restartAnimation = () => {
+        el.style.animation = 'none';
+        el.style.opacity = '0';
+        // Portal edge loop: wait 1 second after exiting left edge, then enter right with fresh randomized Y
+        setTimeout(() => {
+          const newTop = Math.floor(Math.random() * 75) + 8;
+          const newDuration = (Math.random() * 14 + 20).toFixed(1);
+          const newSpin = (Math.random() * 10 + 12).toFixed(1);
+          el.style.top = `${newTop}%`;
+          el.style.setProperty('--spin-duration', `${newSpin}s`);
+          void el.offsetWidth; // force reflow
+          el.style.animation = `foodFloatRightToLeft ${newDuration}s linear 1`;
+        }, 1000);
       };
 
-      run();
-    });
+      el.addEventListener('animationend', (e) => {
+        if (e.animationName === 'foodFloatRightToLeft') {
+          restartAnimation();
+        }
+      });
+
+      container.appendChild(el);
+
+      // Stagger initial entry delays
+      const delay = (index * 2.2).toFixed(1);
+      el.style.animation = `foodFloatRightToLeft ${duration}s linear ${delay}s 1`;
+    };
+
+    for (let i = 0; i < totalParticles; i++) {
+      spawnParticle(i);
+    }
   }
 
+  initFooterFloatingFood();
 });

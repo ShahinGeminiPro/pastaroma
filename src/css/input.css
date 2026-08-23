@@ -495,12 +495,69 @@
   }
 }
 
-/* Premium Footer */
-.site-footer {
-  isolation: isolate;
+/* Footer Section Styling */
+.footer-card {
+  position: relative;
+  background: rgba(24, 24, 27, 0.88);
+  border: 1px solid rgba(224, 90, 56, 0.45);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 25px rgba(224, 90, 56, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
 }
 
-.footer-food-particles {
+.footer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.65), 0 0 35px rgba(224, 90, 56, 0.28);
+  border-color: rgba(224, 90, 56, 0.7);
+}
+
+/* Social Media Buttons */
+.footer-social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.3s ease,
+              box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.footer-social-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  filter: brightness(1.18);
+}
+
+.footer-social-btn-telegram {
+  background-color: #229ED9;
+}
+.footer-social-btn-telegram:hover {
+  box-shadow: 0 6px 20px rgba(34, 158, 217, 0.55);
+}
+
+.footer-social-btn-instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+.footer-social-btn-instagram:hover {
+  box-shadow: 0 6px 20px rgba(214, 36, 159, 0.55);
+}
+
+.footer-social-btn-bale {
+  background-color: #00B574;
+}
+.footer-social-btn-bale:hover {
+  box-shadow: 0 6px 20px rgba(0, 181, 116, 0.55);
+}
+
+/* Floating Food Particles */
+.footer-floating-container {
   position: absolute;
   inset: 0;
   overflow: hidden;
@@ -508,142 +565,50 @@
   z-index: 0;
 }
 
-.footer-food-particle {
+.footer-floating-food {
   position: absolute;
-  width: 78px;
-  height: 58px;
+  right: -120px;
+  width: var(--food-size, 52px);
+  height: var(--food-size, 52px);
+  border-radius: 9999px;
+  overflow: hidden;
+  pointer-events: none;
+  will-change: transform, opacity;
+  border: 1.5px solid rgba(224, 90, 56, 0.35);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5), 0 0 12px rgba(224, 90, 56, 0.15);
+  opacity: 0;
+}
+
+.footer-floating-food img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 999px;
-  opacity: 0.22;
-  filter: saturate(0.9) contrast(0.95);
-  will-change: transform;
-  user-select: none;
+  border-radius: 9999px;
+  animation: foodCounterClockwiseSpin var(--spin-duration, 18s) linear infinite;
 }
 
-.footer-card-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem;
-}
-
-.footer-info-card {
-  min-height: 190px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem 1.5rem;
-  border: 1px solid rgba(224, 90, 56, 0.55);
-  border-radius: 1.25rem;
-  background: rgba(31, 31, 35, 0.78);
-  box-shadow: 0 14px 34px rgba(224, 90, 56, 0.12), inset 0 0 28px rgba(224, 90, 56, 0.025);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.footer-brand-card,
-.footer-contact-card,
-.footer-social-card {
-  text-align: center;
-  align-items: center;
-}
-
-.footer-address-card {
-  text-align: right;
-  align-items: flex-start;
-}
-
-.footer-contact-link {
-  color: #d6d6d8;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
-}
-
-.footer-contact-link:hover {
-  color: #E05A38;
-  text-shadow: 0 0 14px rgba(224, 90, 56, 0.4);
-}
-
-.footer-socials {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-}
-
-.footer-social {
-  width: 48px;
-  height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 14px;
-  color: white;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), filter 0.28s ease, box-shadow 0.28s ease;
-}
-
-.footer-social:hover {
-  transform: translateY(-4px) scale(1.04);
-  filter: brightness(1.12);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.32);
-}
-
-.footer-social img {
-  width: 23px;
-  height: 23px;
-  object-fit: contain;
-}
-
-.footer-social-telegram {
-  background: #229ED9;
-}
-
-.footer-social-instagram {
-  background: linear-gradient(135deg, #833AB4 0%, #E1306C 52%, #FCAF45 100%);
-}
-
-.footer-social-bale {
-  background: #28A745;
-}
-
-.footer-social-bale img {
-  filter: brightness(0) invert(1);
-}
-
-@media (max-width: 1023px) {
-  .footer-card-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@keyframes foodCounterClockwiseSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
   }
 }
 
-@media (max-width: 639px) {
-  .footer-card-grid {
-    grid-template-columns: 1fr;
+@keyframes foodFloatRightToLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
   }
-
-  .footer-info-card {
-    min-height: 165px;
-    padding: 1.5rem 1.25rem;
+  5% {
+    opacity: var(--target-opacity, 0.32);
   }
-
-  .footer-address-card {
-    text-align: right;
-    align-items: flex-start;
+  92% {
+    opacity: var(--target-opacity, 0.32);
   }
-
-  .footer-food-particle {
-    width: 62px;
-    height: 46px;
-    opacity: 0.16;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .footer-food-particle {
-    display: none;
-  }
-
-  .footer-social,
-  .footer-contact-link {
-    transition: none;
+  100% {
+    transform: translateX(var(--travel-distance, -135vw));
+    opacity: 0;
   }
 }
