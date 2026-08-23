@@ -166,8 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
       'assets/images/floating/pasta-alfredo.jpg',
       'assets/images/floating/pizza-pepperoni.jpg',
       'assets/images/floating/burger-classic.jpg',
+      'assets/images/floating/pasta-bolognese.jpg',
+      'assets/images/floating/pizza-quattro-formaggi.jpg',
       'assets/images/floating/pasta-penne.jpg',
+      'assets/images/floating/burger-smash.jpg',
       'assets/images/floating/pizza-margherita.jpg',
+      'assets/images/floating/pasta-lasagna.jpg',
       'assets/images/floating/burger-gourmet.jpg',
       'assets/images/floating/pasta-pesto.jpg',
       'assets/images/floating/pizza-beef.jpg',
@@ -175,7 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
       'assets/images/floating/pizza-crispy.jpg'
     ];
 
-    const totalParticles = 12;
+    const isMobile = window.innerWidth < 640;
+    const totalParticles = isMobile ? 14 : 22;
 
     const spawnParticle = (index) => {
       const el = document.createElement('div');
@@ -222,8 +227,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       container.appendChild(el);
 
-      // Stagger initial entry delays
-      const delay = (index * 2.2).toFixed(1);
+      // Stagger initial entry delays evenly
+      const delay = (index * 1.3).toFixed(1);
       el.style.animation = `foodFloatRightToLeft ${duration}s linear ${delay}s 1`;
     };
 
