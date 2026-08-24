@@ -1,4 +1,4 @@
-import { homeTemplate } from './home.js';
+import { homeTemplate } from './homeTemplate.js';
 
 export class PageHome extends HTMLElement {
   connectedCallback() {

@@ -1,4 +1,4 @@
-import { navbarTemplate } from './navbar.js';
+import { navbarTemplate } from './navbarTemplate.js';
 
 class AppNavbar extends HTMLElement {
   connectedCallback() {
@@ -27,7 +27,7 @@ class AppNavbar extends HTMLElement {
     // Logo to homepage
     const logos = this.querySelectorAll('a.text-primary.font-bold');
     logos.forEach(logo => {
-      if(logo.textContent.trim() === 'پاستاروما') {
+      if (logo.textContent.trim() === 'پاستاروما') {
         logo.href = '/';
         logo.setAttribute('data-link', '');
       }
