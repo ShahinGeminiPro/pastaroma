@@ -15,6 +15,8 @@ module.exports = {
         'cream-surface': '#EFE8DF',
         'primary': '#E05A38',
         'primary-hover': '#D9532F',
+        'secondary': '#3F7254',
+        'secondary-hover': '#325b43',
         'light-text': '#FAFAFA',
         'muted-text': '#A1A1AA',
         'dark-text': '#1C1917',
