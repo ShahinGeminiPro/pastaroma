@@ -94,7 +94,8 @@
 @media (max-width: 639px) {
   .hero-action-btn {
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
+    margin-inline: auto;
     height: 3.5rem;
   }
 }
